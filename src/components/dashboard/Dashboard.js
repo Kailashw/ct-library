@@ -29,7 +29,6 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         books: state.firestore.ordered.books
     }

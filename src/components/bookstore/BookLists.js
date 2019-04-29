@@ -1,16 +1,20 @@
 import React from 'react'
 import BookStoreSummary from './BookStoreSummary';
+import { Link } from 'react-router-dom'
 
-
-const BookList = ({books}) => {
+const BookList = ({ books }) => {
 
     return (
         <div className="project-list section">
-        {
-            books && books.map(book=> {
-                return (<BookStoreSummary book={book} key={book.id}/>)
-            })
-        }
+            {
+                books && books.map(book => {
+                    return (
+                        <Link to={`/bookstore/${book.id}`}>
+                            <BookStoreSummary book={book} key={book.id} />
+                        </Link>
+                    )
+                })
+            }
         </div>
     )
 }
