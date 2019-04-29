@@ -1,11 +1,20 @@
 export const createBookStore = (book) =>{
 
-    return (dispatch, getState) => {
+    return (dispatch, getState, {getFirebase, getFirestore})  => {
         // make async call to database
-        dispatch({
-            type : 'ADD_BOOKSTORE',
-            book
-        })
+        const firestore = getFirestore()
+        firestore.collection('books').add({
+            ...book,
+            authorFirstName : 'Kailash',
+            authorLastName : 'Walldoddi',
+            authorId : 12345,
+            createdOn : new Date()
+        }).then(()=> {
+            dispatch({
+                type : 'ADD_BOOKSTORE',
+                book
+            })
+        }
+        )
     }
-        
 }

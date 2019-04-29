@@ -1,12 +1,6 @@
 
 const initState = {
-    books : [
-        {id:1, title:'book 1', description: 'This is a good book'},
-        {id:2, title:'book 2', description: 'A good book this is.'},
-        {id:3, title:'book 3', description: 'is this a good book?'},
-        {id:4, title:'book 4', description: 'good book is this?'},
-        {id:5, title:'book 5', description: 'a good book'}
-    ]
+    books : []
 }
 
 const bookStoreReducer = (state= initState, action) =>{
@@ -14,10 +8,12 @@ const bookStoreReducer = (state= initState, action) =>{
         case 'ADD_BOOKSTORE' :
             console.log('created',action.book)
             return state
+        case 'ADD_BOOKSTORE_ERROR' :
+            console.log('created',action.err)
+            return state
         default:
             return state
     }
-    return state
 }
 
 export default bookStoreReducer
