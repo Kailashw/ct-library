@@ -1,27 +1,35 @@
 import React, { Component } from 'react'
 import Notifications from './Notifications'
 import BookLists from '../bookstore/BookLists'
+import { connect } from 'react-redux'
 
 class DashBoard extends Component {
 
-    constructor(props){
+    constructor(props) {
         super()
     }
 
-    render(){
+    render() {
+        const { books } = this.props
         return (
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m6">
-                        <BookLists/>
+                        <BookLists books={books} />
                     </div>
                     <div className="col s12 m5 offset-m1">
-                        <Notifications/>
+                        <Notifications />
                     </div>
-                </div> 
-            </div>            
-            ) 
+                </div>
+            </div>
+        )
     }
 }
 
-export default DashBoard
+const mapStateToProps = (state) => {
+    return {
+        books: state.books.books
+    }
+}
+
+export default connect(mapStateToProps)(DashBoard)
