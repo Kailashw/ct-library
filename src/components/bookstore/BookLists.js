@@ -9,8 +9,8 @@ const BookList = ({ books }) => {
             {
                 books && books.map(book => {
                     return (
-                        <Link to={`/bookstore/${book.id}`}>
-                            <BookStoreSummary book={book} key={book.id} />
+                        <Link to={`/bookstore/${book.id}`} key={book.id}>
+                            <BookStoreSummary book={book}  />
                         </Link>
                     )
                 })

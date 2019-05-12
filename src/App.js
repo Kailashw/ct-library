@@ -6,6 +6,7 @@ import BookDetails from '../src/components/bookstore/BookDetails'
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SingnUp';
 import CreateBookStore from './components/bookstore/CreateBookStore';
+import PrivateRoutes from './components/routes/PrivateRoutes';
 
 function App() {
   return (
@@ -14,11 +15,11 @@ function App() {
       {/* <h1> CT Book Library</h1> */}
       <NavBar/>
       <Switch>
-        <Route exact path="/" component={DashBoard} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/create" component={CreateBookStore}/>
-        <Route path="/bookstore/:id" component={BookDetails} />
+        <PrivateRoutes path="/create" component={CreateBookStore}/>
+        <PrivateRoutes path="/bookstore/:id" component={BookDetails} />
+        <PrivateRoutes exact path="/" component={DashBoard} />
       </Switch>
     </div>
     </BrowserRouter>
