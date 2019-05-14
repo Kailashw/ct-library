@@ -4,7 +4,7 @@ import NavBar from './components/layout/NavBar'
 import DashBoard from '../src/components/dashboard/Dashboard'
 import BookDetails from '../src/components/bookstore/BookDetails'
 import SignIn from './components/auth/SignIn';
-import SignUp from './components/auth/SingnUp';
+import SignUp from './components/auth/SignUp';
 import CreateBookStore from './components/bookstore/CreateBookStore';
 import PrivateRoutes from './components/routes/PrivateRoutes';
 

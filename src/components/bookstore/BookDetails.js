@@ -3,6 +3,12 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
+function formatDate(date){
+    const currentDate = new Date()
+    const dateString = currentDate.getDate() + "-" +(currentDate.getMonth() + 1) + "-" + currentDate.getFullYear()
+    return dateString
+}
+
 const BookDetails = (props) => {
     const { book } = props
     if (book) {
@@ -15,7 +21,7 @@ const BookDetails = (props) => {
                     </div>
                     <div className="card-action grey lighten-4 grey-text">
                         <div>Posted by {book.authorFirstName} {book.authorLastName}</div>
-                        <div>2nd September, 2am</div>
+                        <div>{formatDate(book.createdOn)}</div>
                     </div>
                 </div>
             </div>

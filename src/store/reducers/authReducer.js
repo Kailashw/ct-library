@@ -1,6 +1,7 @@
 
 const initState = {
-    authError : null
+    authError : null,
+    redirect : false
 }
 
 const authReducer = (state= initState, action) =>{
@@ -24,6 +25,18 @@ const authReducer = (state= initState, action) =>{
             return {
                 ...state,
                 authError : null
+            }
+        case 'SIGNUP_ERROR' :
+            return {
+                ...state,
+                authError : action.err.message,
+                redirect:false
+            }
+        case 'SIGNUP_SUCCESS' :
+            return {
+                ...state,
+                authError : null,
+                redirect : true
             }
         default:
             return state

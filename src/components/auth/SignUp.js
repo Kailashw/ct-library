@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { signUp } from '../../store/actions/authActions';
 
 class SignUp extends Component {
   state ={
@@ -12,11 +15,19 @@ class SignUp extends Component {
       this.setState({[e.target.id] : e.target.value}) 
   }
 
+  componentDidUpdate(){
+    if(this.props.redirect){
+      this.props.history.push('/')
+    }
+  }
+  
   handleSubmit = (e) =>{
       e.preventDefault()
-      console.log(this.state)
+      this.props.signUp(this.state)
   }
+
   render() {
+    const { auth, authError} = this.props
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -42,6 +53,11 @@ class SignUp extends Component {
                     Sign Up
                 </button>
             </div>
+            <div className="red-text center">
+                {
+                  authError ? <p>{authError} </p> : ''
+                }
+            </div>
         </form>
         
       </div>
@@ -49,4 +65,19 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp : (newUser) => dispatch(signUp(newUser))
+  }
+}
+
+
+const mapStateToProps = state => {
+  return {
+      authError : state.auth.authError,
+      auth : state.auth.authError,
+      redirect : state.auth.redirect
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignUp)

@@ -15,6 +15,7 @@ class CreateBookStore extends Component {
   handleSubmit = (e) =>{
       e.preventDefault()
       this.props.createBookStore(this.state)
+      this.props.history.push('/')
   }
   render() {
     return (
