@@ -36,7 +36,6 @@ class SignIn extends Component {
       return <Redirect to={from} />
     }
 
-    console.log(redirectToReferrer,from)
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">

@@ -9,9 +9,11 @@ const BookList = ({ books }) => {
             {
                 books && books.map(book => {
                     return (
+                        <div className="col s12 m6">
                         <Link to={`/bookstore/${book.id}`} key={book.id}>
                             <BookStoreSummary book={book}  />
                         </Link>
+                        </div>
                     )
                 })
             }
